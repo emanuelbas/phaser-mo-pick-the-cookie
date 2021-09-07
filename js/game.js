@@ -21,7 +21,7 @@ Game.init = function(){
 Game.preload = function() {
     game.load.tilemap('map', 'assets/map/example_map.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.spritesheet('tileset', 'assets/map/tilesheet.png',32,32);
-    game.load.spritesheet('items1', 'assets/sprites/items1.png', 48, 48, 20 ); //EB01
+    game.load.spritesheet('items1', 'assets/sprites/items1.png', 48, 48, 1000 ); //EB01
     game.load.image('sprite','assets/sprites/sprite.png');
 };
 
@@ -51,7 +51,8 @@ Game.getCoordinates = function(layer,pointer){
 };
 
 Game.addNewPlayer = function(id,x,y){
-    Game.playerMap[id] = game.add.sprite(x,y,'sprite');
+    let frameNumber = Math.floor(Math.random() * (178 - 176) + 176);
+    Game.playerMap[id] = game.add.sprite(x,y,'items1', frameNumber);
 };
 
 Game.movePlayer = function(id,x,y){
