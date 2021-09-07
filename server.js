@@ -16,6 +16,12 @@ server.lastPlayderID = 0;
 server.listen(process.env.PORT || 8081,function(){
     console.log('Listening on '+server.address().port);
 });
+//EB02 - I
+setInterval(function(){
+    io.sockets.emit('cookieUpdate', sendCookie());
+    console.log("Posicion de galleta enviada, soldado.");
+}, 5000);
+//EB02 - F
 
 io.on('connection',function(socket){
 
@@ -38,6 +44,8 @@ io.on('connection',function(socket){
         socket.on('disconnect',function(){
             io.emit('remove',socket.player.id);
         });
+
+
     });
 
     socket.on('test',function(){
@@ -56,4 +64,14 @@ function getAllPlayers(){
 
 function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);
+}
+
+//EB02
+function sendCookie(){
+    let x = randomInt(100,400);
+    let y = randomInt(100,400);
+    return {
+        x : x,
+        y : y
+    }
 }

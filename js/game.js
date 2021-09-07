@@ -41,8 +41,8 @@ Game.create = function(){
     layer.events.onInputUp.add(Game.getCoordinates, this);
     Client.askNewPlayer();
 //EB01-I
-    cookie = game.add.sprite(400,200,'items1', 10);
-    cookie.scale.setTo(1,1);
+//    cookie = game.add.sprite(400,200,'items1', 10);
+//    cookie.scale.setTo(1,1);
 //EB01-F
 };
 
